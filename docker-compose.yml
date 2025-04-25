@@ -1,0 +1,44 @@
+services:
+  owncloud:
+    image: owncloud/server:10.13
+    container_name: owncloud-server
+    restart: always
+    ports:
+      - 8889:8080
+    environment:
+      - OWNCLOUD_DOMAIN=localhost
+      - OWNCLOUD_DB_TYPE=mysql
+      - OWNCLOUD_DB_HOST=owncloud-db
+      - OWNCLOUD_DB_NAME=owncloud
+      - OWNCLOUD_DB_USERNAME=owncloud
+      - OWNCLOUD_DB_PASSWORD=cloudpass
+      - OWNCLOUD_ADMIN_USERNAME=admin
+      - OWNCLOUD_ADMIN_PASSWORD=adminpass
+    depends_on:
+      - mariadb
+    networks:
+      - owncloud_network
+    volumes:
+      - owncloud_files:/mnt/data
+
+  mariadb:
+    image: mariadb:10.5
+    container_name: owncloud-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=owncloud
+      - MYSQL_USER=owncloud
+      - MYSQL_PASSWORD=cloudpass
+    networks:
+      - owncloud_network
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  owncloud_network:
+    driver: bridge
+
+volumes:
+  owncloud_files:
+  db_data:
