@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FileList from '../components/FileList';
 import '../styles/list.css';
+import API_URL from '../services/api.js';
 
 const ListPage = () => {
   const [files, setFiles] = useState([]);
@@ -12,7 +13,7 @@ const ListPage = () => {
     const fetchFiles = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:5000/api/files/list');
+        const res = await axios.get(`${API_URL}/api/files/list`);
         setFiles(res.data.files || []);
         setError('');
       } catch (err) {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FileUpload from "../components/FileUpload";
 import "../styles/upload.css";
+import API_URL from '../services/api.js';
 
 const FileUploadPage = () => {
   const [status, setStatus] = useState({ message: '', type: '' });
@@ -11,7 +12,7 @@ const FileUploadPage = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/files/upload", formData, {
+      const response = await axios.post(`${API_URL}/api/files/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

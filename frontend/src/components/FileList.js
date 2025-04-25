@@ -1,4 +1,5 @@
 import React from 'react';
+import API_URL from '../services/api.js';
 
 const FileList = ({ files }) => {
   // If no files or empty array
@@ -25,17 +26,17 @@ const FileList = ({ files }) => {
               <polyline points="14 2 14 8 20 8"></polyline>
             </svg>
           </div>
-          
+
           <div className="file-details">
             <h3 className="file-name">{file.name}</h3>
             <div className="file-meta">
               <div className="file-path">{file.path}</div>
             </div>
           </div>
-          
+
           <div className="file-actions">
-            <a 
-              href={`http://localhost:5000/api/files/download?path=${encodeURIComponent(file.path)}`}
+            <a
+              href={`${API_URL}/api/files/download?path=${encodeURIComponent(file.path)}`}
               className="download-button"
               download
             >
