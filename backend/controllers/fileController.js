@@ -7,6 +7,7 @@ const {
 } = require('../utils/owncloudService');
 
 // Upload file to OwnCloud
+// Upload file to OwnCloud
 const uploadFile = async (req, res) => {
   try {
     if (!req.file) {
@@ -14,24 +15,28 @@ const uploadFile = async (req, res) => {
       return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    console.log('File details:', req.file);
-    
-    const filename = req.file.filename;
-    const remotePath = `uploads/${filename}`;
-    const localFilePath = path.join(__dirname, '..', 'uploads', filename);
-    
+    const filename = req.file.originalname;
+    const remotePath = filename; // Upload to root directory
+    const localFilePath = req.file.path; // Absolute local file path from multer
+
     if (!fs.existsSync(localFilePath)) {
-      console.error('Local file does not exist');
+      console.error('Local file does not exist:', localFilePath);
       return res.status(500).json({ message: 'Upload failed - file not found locally' });
     }
 
     const result = await uploadFileToOwnCloud(remotePath, localFilePath);
-    res.status(200).json({ message: 'File uploaded successfully', data: result });
+
+    res.status(200).json({ 
+      message: 'File uploaded successfully', 
+      data: result,
+      uploadedTo: 'root directory'
+    });
   } catch (err) {
     console.error('Upload error:', err);
     res.status(500).json({ message: 'Upload failed', error: err.message });
   }
 };
+
 
 // List files from OwnCloud
 async function listFiles(req, res) {
