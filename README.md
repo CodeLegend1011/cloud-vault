@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/b49d417c-0521-45f8-953f-ea1a6682645a)
+![image](https://github.com/user-attachments/assets/4a0d7994-8600-4815-b4a5-bda08e0f660c)
+
 # 📁 Role-Based Secure Document Vault with Share Controls
 
 A secure and self-hosted cloud-based document vault that allows **role-based file access**, **encrypted storage**, and **user-to-user file sharing** using **OwnCloud**, **Docker**, **Node.js**, and **MongoDB**, with a fully customized **frontend UI** for professional file management.
@@ -211,32 +212,29 @@ Use Postman or browser to test API endpoints:
 - [ ] Role management UI for Admin
 - [ ] Upgrade to React frontend with animations
 
----
 ## 🖼️ Images & UI Previews
 
-| 💻 OwnCloud Dashboard | 🔐 OwnCloud Dashboard |
+| 💻 OwnCloud Access | 🔐 OwnCloud Dashboard |
 |------------------------|------------------------|
-| ![OwnCloud](https://github.com/user-attachments/assets/cf8fbd6f-08c6-4839-9cf5-0c2c56bd50a0) | ![image](https://github.com/user-attachments/assets/b55b5128-dde6-44e5-a7d1-038430fc2efe) |
+| ![OwnCloud Access](https://github.com/user-attachments/assets/3a35bf34-a71e-453f-820d-3c76d1036a3a) | ![OwnCloud Dashboard](https://github.com/user-attachments/assets/4a354835-7da1-469e-a18d-9f0ee330d8e4) |
 
 ---
 
-| 💻 Website Landing Page | 🔐 Login Page |
+| 💻 Website Landing Page | 🔐 User Authorization |
 |------------------------|------------------------|
-| ![image](https://github.com/user-attachments/assets/0fe2460c-772b-4451-9f61-530587706851) | ![image](https://github.com/user-attachments/assets/86423047-cdb7-4a65-b54f-1bac5a24806d) |
+| ![Website Landing Page](https://github.com/user-attachments/assets/4a0d7994-8600-4815-b4a5-bda08e0f660c) | ![User Authorization](https://github.com/user-attachments/assets/6223ed80-da74-462c-9fdd-592ab811a08b) |
 
 ---
 
-| 📝 Register Page | 📤 File Upload Interface |
-|------------------|--------------------------|
-| ![Register Page](https://github.com/user-attachments/assets/41885850-bf6a-42a4-81ba-84a71badba89) | ![File Upload](https://github.com/user-attachments/assets/16638755-084a-4be8-964c-15c5f99a2e0f) |
+| 📝 File Upload Interface | 📤 Admin Role Management |
+|--------------------------|--------------------------|
+| ![File Upload Interface](https://github.com/user-attachments/assets/49e497eb-4519-47c4-ac28-fc62101156f3) | ![Admin Role Management](https://github.com/user-attachments/assets/10fdcf04-13f9-4697-bf84-78abf39ddf0a) |
 
 ---
 
-| 📂 File Listing  ⬇️ File Download |
+| 📂 File Listing & File Download |
 |------------------------------------|
-| ![File Download](https://github.com/user-attachments/assets/6983823b-0ecd-4ea1-a5c2-07762b140748) |
-
----
+| ![File Listing & Download](https://github.com/user-attachments/assets/c325b9a8-9d90-4598-b03a-396c870a7ba8) |
 
 ## 🤝 Contribution
 
