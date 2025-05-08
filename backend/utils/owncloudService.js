@@ -168,8 +168,55 @@ const downloadFileFromOwnCloud = async (filePath) => {
   return { stream: response.data, filename };
 };
 
+// Delete file from OwnCloud
+const deleteFileFromOwnCloud = async (filePath) => {
+  try {
+    // Build full URL manually
+    let baseUrl = process.env.OWNCLOUD_URL;
+    
+    // Remove trailing slash from base URL if it exists
+    if (baseUrl.endsWith('/')) {
+      baseUrl = baseUrl.slice(0, -1);
+    }
+    
+    // Remove leading slash from file path if it exists
+    const cleanFilePath = filePath.startsWith('/') ? filePath.substring(1) : filePath;
+    
+    // Combine URL parts
+    const fullUrl = `${baseUrl}/${cleanFilePath}`;
+    console.log('Delete URL:', fullUrl);
+    
+    // Make request
+    const response = await axios({
+      method: 'DELETE',
+      url: fullUrl,
+      auth: {
+        username: process.env.OWNCLOUD_USERNAME,
+        password: process.env.OWNCLOUD_PASSWORD
+      }
+    });
+    
+    console.log('Delete response status:', response.status);
+    
+    return {
+      success: true,
+      status: response.status,
+      path: filePath
+    };
+  } catch (err) {
+    console.error('OwnCloud delete error details:', {
+      message: err.message,
+      status: err.response?.status,
+      data: err.response?.data,
+      url: err.config?.url
+    });
+    throw new Error(`Failed to delete file from OwnCloud: ${err.message}`);
+  }
+};
+
 module.exports = {
   uploadFileToOwnCloud,
   listFilesFromOwnCloud,
-  downloadFileFromOwnCloud
+  downloadFileFromOwnCloud,
+  deleteFileFromOwnCloud
 };
